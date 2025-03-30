@@ -34,7 +34,7 @@ export async function signUp(params: SignUpParams) {
     if (userRecord.exists)
       return {
         success: false,
-        message: "El usuario ya existe, por favor inicie sesión.",
+        message: "User already exists. Please sign in.",
       };
 
     // save user to db
@@ -47,22 +47,22 @@ export async function signUp(params: SignUpParams) {
 
     return {
       success: true,
-      message: "Cuenta creada correctamente.",
+      message: "Account created successfully. Please sign in.",
     };
   } catch (error: any) {
-    console.error("Error al crear el usuario:", error);
+    console.error("Error creating user:", error);
 
     // Handle Firebase specific errors
     if (error.code === "auth/email-already-exists") {
       return {
         success: false,
-        message: "Este correo ya se encuentra en uso.",
+        message: "This email is already in use",
       };
     }
 
     return {
       success: false,
-      message: "Error al crear la cuenta. Vuelva a intentarlo.",
+      message: "Failed to create account. Please try again.",
     };
   }
 }
@@ -75,7 +75,7 @@ export async function signIn(params: SignInParams) {
     if (!userRecord)
       return {
         success: false,
-        message: "El usuario no existe, Cree una cuenta.",
+        message: "User does not exist. Create an account.",
       };
 
     await setSessionCookie(idToken);
@@ -84,7 +84,7 @@ export async function signIn(params: SignInParams) {
 
     return {
       success: false,
-      message: "Error al iniciar sesión, vuelva a intentarlo.",
+      message: "Failed to log into account. Please try again.",
     };
   }
 }
