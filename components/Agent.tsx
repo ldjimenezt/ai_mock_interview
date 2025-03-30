@@ -52,8 +52,8 @@ const Agent = ({
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);
     vapi.on("message", onMessage);
-    vapi.on("spech-start", onSpechStart);
-    vapi.on("spech-end", onSpechEnd);
+    vapi.on("speech-start", onSpechStart);
+    vapi.on("speech-end", onSpechEnd);
     vapi.on("error", onError);
 
     return () => {
@@ -181,11 +181,11 @@ const Agent = ({
 
       <div className="w-full flex justify-center">
         {callStatus !== "ACTIVE" ? (
-          <button className="relative btn-call" onClick={handleCall}>
+          <button className="relative btn-call" onClick={() => handleCall()}>
             <span
               className={cn(
                 "absolute animate-ping rounded-full opacity-75",
-                callStatus !== "CONECTING" && "hidden"
+                callStatus !== "CONNECTING" && "hidden"
               )}
             />
             <span>{isCallInactiveOrFinished ? "Call" : ". . ."}</span>
