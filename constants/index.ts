@@ -1,4 +1,4 @@
-// import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
+import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 import { z } from "zod";
 
 export const mappings = {
@@ -97,63 +97,53 @@ export const mappings = {
   "aws amplify": "amplify",
 };
 
-// export const interviewer: CreateAssistantDTO = {
-//   name: "Interviewer",
-//   firstMessage:
-//     "Hello! Thank you for taking the time to speak with me today. I'm excited to learn more about you and your experience.",
-//   transcriber: {
-//     provider: "deepgram",
-//     model: "nova-2",
-//     language: "en",
-//   },
-//   voice: {
-//     provider: "11labs",
-//     voiceId: "sarah",
-//     stability: 0.4,
-//     similarityBoost: 0.8,
-//     speed: 0.9,
-//     style: 0.5,
-//     useSpeakerBoost: true,
-//   },
-//   model: {
-//     provider: "openai",
-//     model: "gpt-4",
-//     messages: [
-//       {
-//         role: "system",
-//         content: `You are a professional job interviewer conducting a real-time voice interview with a candidate. Your goal is to assess their qualifications, motivation, and fit for the role.
+export const interviewer: CreateAssistantDTO = {
+  name: "Interviewer",
+  firstMessage:
+    "¡Hola! Gracias por tomarte el tiempo de hablar conmigo hoy. Me entusiasma saber más sobre ti y tu experiencia.",
+  transcriber: {
+    provider: "azure",
+    language: "es-MX",
+  },
+  voice: {
+    provider: "vapi",
+    voiceId: "Neha",
 
-// Interview Guidelines:
-// Follow the structured question flow:
-// {{questions}}
+    speed: 1.0,
+  },
+  model: {
+    provider: "openai",
+    model: "gpt-4",
+    messages: [
+      {
+        role: "system",
+        content: `Eres un entrevistador profesional que realiza una entrevista de voz en tiempo real con un candidato. Tu objetivo es evaluar sus cualificaciones, motivación y aptitud para el puesto.
 
-// Engage naturally & react appropriately:
-// Listen actively to responses and acknowledge them before moving forward.
-// Ask brief follow-up questions if a response is vague or requires more detail.
-// Keep the conversation flowing smoothly while maintaining control.
-// Be professional, yet warm and welcoming:
+Interactúe con naturalidad y reaccione adecuadamente:
+Escuche atentamente las respuestas y reconózcalas antes de continuar.
+Formule preguntas breves de seguimiento si una respuesta es vaga o requiere más detalles.
+Mantenga la conversación fluida, manteniendo el control.
+Sea profesional, pero cálido y acogedor:
 
-// Use official yet friendly language.
-// Keep responses concise and to the point (like in a real voice interview).
-// Avoid robotic phrasing—sound natural and conversational.
-// Answer the candidate’s questions professionally:
+Use un lenguaje formal pero amigable.
+Mantenga las respuestas concisas y directas (como en una entrevista de voz real).
+Evite las frases robóticas; suene natural y conversacional.
+Responda las preguntas del candidato con profesionalidad:
 
-// If asked about the role, company, or expectations, provide a clear and relevant answer.
-// If unsure, redirect the candidate to HR for more details.
+Si le preguntan sobre el puesto, la empresa o las expectativas, proporcione una respuesta clara y relevante.
+Si tiene dudas, redirija al candidato a Recursos Humanos para obtener más detalles.
 
-// Conclude the interview properly:
-// Thank the candidate for their time.
-// Inform them that the company will reach out soon with feedback.
-// End the conversation on a polite and positive note.
+Concluya la entrevista adecuadamente:
+Agradezca al candidato su tiempo.
+Infórmele que la empresa se pondrá en contacto con usted pronto para darle su opinión.
+Termine la conversación de forma educada y positiva.
 
-
-// - Be sure to be professional and polite.
-// - Keep all your responses short and simple. Use official language, but be kind and welcoming.
-// - This is a voice conversation, so keep your responses short, like in a real conversation. Don't ramble for too long.`,
-//       },
-//     ],
-//   },
-// };
+- Asegúrese de ser profesional y educado. - Responde concisamente y concisamente. Usa un lenguaje formal, pero sé amable y cordial.
+- Esta es una conversación oral, así que responde concisamente, como en una conversación real. No divagues demasiado.`,
+      },
+    ],
+  },
+};
 
 export const feedbackSchema = z.object({
   totalScore: z.number(),
@@ -209,10 +199,10 @@ export const dummyInterviews: Interview[] = [
     id: "1",
     userId: "user1",
     role: "Frontend Developer",
-    type: "Técnica",
+    type: "Technical",
     techstack: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
     level: "Junior",
-    questions: ["Qué es React?"],
+    questions: ["What is React?"],
     finalized: false,
     createdAt: "2024-03-15T10:00:00Z",
   },
@@ -220,10 +210,10 @@ export const dummyInterviews: Interview[] = [
     id: "2",
     userId: "user1",
     role: "Full Stack Developer",
-    type: "Mixto",
+    type: "Mixed",
     techstack: ["Node.js", "Express", "MongoDB", "React"],
     level: "Senior",
-    questions: ["Qué es Node JS?"],
+    questions: ["What is Node.js?"],
     finalized: false,
     createdAt: "2024-03-14T15:30:00Z",
   },

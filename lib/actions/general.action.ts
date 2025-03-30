@@ -23,19 +23,19 @@ export async function createFeedback(params: CreateFeedbackParams) {
       }),
       schema: feedbackSchema,
       prompt: `
-        You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
-        Transcript:
+        Eres un entrevistador de IA que analiza una entrevista simulada. Tu tarea es evaluar al candidato según categorías estructuradas. Sé minucioso y detallado en tu análisis. No seas indulgente con el candidato. Si encuentras errores o áreas de mejora, indícalos.
+Transcripción:
         ${formattedTranscript}
 
-        Please score the candidate from 0 to 100 in the following areas. Do not add categories other than the ones provided:
-        - **Communication Skills**: Clarity, articulation, structured responses.
-        - **Technical Knowledge**: Understanding of key concepts for the role.
-        - **Problem-Solving**: Ability to analyze problems and propose solutions.
-        - **Cultural & Role Fit**: Alignment with company values and job role.
-        - **Confidence & Clarity**: Confidence in responses, engagement, and clarity.
+       Por favor, califique al candidato de 0 a 100 en las siguientes áreas. No agregue categorías distintas a las proporcionadas:
+- **Habilidades de Comunicación**: Claridad, articulación, respuestas estructuradas.
+- **Conocimientos Técnicos**: Comprensión de los conceptos clave del puesto.
+- **Resolución de Problemas**: Capacidad para analizar problemas y proponer soluciones.
+- **Adecuación Cultural y al Puesto**: Alineación con los valores de la empresa y el puesto.
+- **Confianza y Claridad**: Confianza en las respuestas, compromiso y claridad.
         `,
       system:
-        "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
+        "Eres un entrevistador profesional que analiza una entrevista simulada. Tu tarea es evaluar al candidato según categorías estructuradas.",
     });
 
     const feedback = {
